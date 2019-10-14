@@ -54,6 +54,7 @@ include "header.php";
                                             <th>Username</th>
                                             <th>Email</th>
                                             <th class="text-center">IP</th>
+											<th class="text-center">Credits</th>
                                             <th class="text-center">Type</th>
                                             <th class="text-center">Status</th>
                                             <th class="text-center">Verified</th>
@@ -172,7 +173,7 @@ include "header.php";
                     }
                 },
                 columnDefs: [
-                    {"className": "dt-center", "targets": [0,3,4,5,6,7,8]}
+                    {"className": "dt-center", "targets": [0,3,4,5,6,7,8,9]}
                 ],
             });
             <?php if (!$detect->isMobile()) { ?>

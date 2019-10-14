@@ -7,7 +7,7 @@ if (isset($_POST["submit_user"])) {
         $rArray = getRegisteredUser($_POST["edit"]);
         unset($rArray["id"]);
     } else {
-        $rArray = Array("username" => "", "password" => "", "email" => "", "member_group_id" => 1);
+        $rArray = Array("username" => "", "password" => "", "email" => "", "member_group_id" => 1, "credits" => "", "notes" => "");
     }
     if ((strlen($_POST["username"]) == 0) OR ((strlen($_POST["password"]) == 0) AND (!isset($_POST["edit"])))) {
         $_STATUS = 1;
@@ -173,9 +173,20 @@ include "header.php"; ?>
                                             <div class="tab-pane" id="advanced-options">
                                                 <div class="row">
                                                     <div class="col-12">
-                                                        <p class="sub-header text-center">
-                                                            Advanced options and reseller options are coming in a future release. Stay tuned.
-                                                        </p>
+                                                        <div class="form-group row mb-4">
+                                                            <label class="col-md-4 col-form-label" for="credits">Credits:</label>
+                                                            <div class="col-md-8">
+                                                                <input type="text" class="form-control" id="credits" name="credits" value="<?php if (isset($rUser)) { echo $rUser["credits"]; } ?>">
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="form-group row mb-4">
+                                                            <label class="col-md-4 col-form-label" for="notes">Note:</label>
+                                                            <div class="col-md-8">
+                                                                <input type="text" class="form-control" id="notes" name="notes" value="<?php if (isset($rUser)) { echo $rUser["notes"]; } ?>">
+                                                            </div>
+                                                        </div>
+													
                                                     </div> <!-- end col -->
                                                 </div> <!-- end row -->
                                                 <ul class="list-inline wizard mb-0">
