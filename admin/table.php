@@ -77,7 +77,7 @@ if ($_GET["id"] == "users") {
                     $val = 0;
                 }
                 if ($d == 0) { $d = "&infin;"; }
-                return "<a href=\"./live_connections.php?user_id=".$row["id"]."\">".$val." / ".$d."</a>";
+                return "<a href=\"./user_activity.php?user_id=".$row["id"]."\">".$val." / ".$d."</a>";
             }
         ),
         array('db' => 'max_connections', 'dt' => 8,
@@ -360,7 +360,7 @@ if ($_GET["id"] == "users") {
         ),
         array('db' => 'id', 'dt' => 4,
             'formatter' => function( $d, $row, $server ) {
-                return "<a href=\"./live_connections.php?stream_id=".$row["id"]."\">".$server["active_count"]."</a>";
+                return "<a href=\"./user_activity.php?stream_id=".$row["id"]."\">".$server["active_count"]."</a>";
             }
         ),
         array('db' => 'id', 'dt' => 5,
@@ -386,15 +386,6 @@ if ($_GET["id"] == "users") {
             }
         ),
         array('db' => 'id', 'dt' => 7,
-            'formatter' => function( $d, $row, $server ) {
-                if ((intval($server["actual_status"]) == 1) OR ($server["on_demand"] == 1) OR ($server["actual_status"] == 5)) {
-                    return '<button type="button" class="btn btn-outline-info waves-effect waves-light btn-xs" onClick="player('.$d.');"><i class="mdi mdi-play"></i></button>';
-                } else {
-                    return '<button type="button" disabled class="btn btn-outline-secondary waves-effect waves-light btn-xs"><i class="mdi mdi-play"></i></button>';
-                }
-            }
-        ),
-        array('db' => 'id', 'dt' => 8,
             'formatter' => function( $d, $row, $server ) {
                 return $server["stream_text"];
             }
@@ -457,7 +448,7 @@ if ($_GET["id"] == "users") {
         array('db' => 'stream_display_name', 'dt' => 1),
         array('db' => 'id', 'dt' => 2,
             'formatter' => function( $d, $row) {
-                return '<a href="./movie.php?id='.$d.'"><button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit Movie" class="btn btn-outline-info waves-effect waves-light btn-xs"><i class="mdi mdi-pencil-outline"></i></button></a>';
+                return '<a href="./addmovie.php?id='.$d.'"><button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit Movie" class="btn btn-outline-info waves-effect waves-light btn-xs"><i class="mdi mdi-pencil-outline"></i></button></a>';
             }
         )
     );
@@ -482,8 +473,8 @@ if ($_GET["id"] == "users") {
         ),
         array('db' => 'id', 'dt' => 3,
             'formatter' => function( $d, $row) {
-                return '<button type="button" style="display: none;" class="btn-remove btn btn-outline-danger waves-effect waves-light btn-xs" onClick="toggleBouquet('.$d.', \'vod\');"><i class="mdi mdi-minus"></i></button>
-                <button type="button" style="display: none;" class="btn-add btn btn-outline-info waves-effect waves-light btn-xs" onClick="toggleBouquet('.$d.', \'vod\');"><i class="mdi mdi-plus"></i></button>';
+                return '<button type="button" style="display: none;" class="btn-remove btn btn-outline-danger waves-effect waves-light btn-xs" onClick="toggleBouquet('.$d.', \'stream\');"><i class="mdi mdi-minus"></i></button>
+                <button type="button" style="display: none;" class="btn-add btn btn-outline-info waves-effect waves-light btn-xs" onClick="toggleBouquet('.$d.', \'stream\');"><i class="mdi mdi-plus"></i></button>';
             }
         )
     );

@@ -69,7 +69,6 @@ include "header.php";
                                             <th class="text-center">Clients</th>
                                             <th class="text-center">Uptime</th>
                                             <th class="text-center">Actions</th>
-                                            <th class="text-center">Player</th>
                                             <th>Stream Info</th>
                                         </tr>
                                     </thead>
@@ -138,14 +137,7 @@ include "header.php";
                 $.toast("An error occured while processing your request.");
             });
         }
-        function player(rID) {
-            $.magnificPopup.open({
-                items: {
-                    src: "./player.php?type=live&id=" + rID,
-                    type: 'iframe'
-                }
-            });
-        }
+
         function reloadStreams() {
             if (autoRefresh == true) {
                 $("#datatable").DataTable().ajax.reload( null, false );
@@ -178,7 +170,7 @@ include "header.php";
                     }
                 },
                 columnDefs: [
-                    {"className": "dt-center", "targets": [0,4,5,6,7]}
+                    {"className": "dt-center", "targets": [0,4,5,6]}
                 ],
             });
             <?php if (!$detect->isMobile()) { ?>
@@ -199,7 +191,8 @@ include "header.php";
         <script src="assets/libs/datatables/buttons.print.min.js"></script>
         <script src="assets/libs/datatables/dataTables.keyTable.min.js"></script>
         <script src="assets/libs/datatables/dataTables.select.min.js"></script>
-        <script src="assets/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
+        <script src="assets/libs/pdfmake/pdfmake.min.js"></script>
+        <script src="assets/libs/pdfmake/vfs_fonts.js"></script>
         <!-- third party js ends -->
 
         <!-- App js-->
